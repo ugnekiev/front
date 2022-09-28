@@ -1,1 +1,7 @@
 @import "~bootstrap/scss/bootstrap";
+@import './sass/line';
+
+.modal {
+    display: block;
+    background-color: #0000005f;
+}

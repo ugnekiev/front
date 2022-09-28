@@ -1,8 +1,7 @@
-
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import Suppliers from '../../Contexts/Suppliers';
-import axios from 'axios';
+
 
 
 function Create() {
@@ -10,7 +9,7 @@ function Create() {
 const [title, setTitle] = useState ('');
 const [price, setPrice] = useState ('');
 
-const {createData, setCreateData} = useContext(Suppliers);
+const { setCreateData } = useContext(Suppliers);
 
 
 const add = () => {
@@ -24,16 +23,6 @@ const add = () => {
   
 }
 
-useEffect(() => {
-  if(null === createData) {
-    return;
-  }
-  axios.post('http://localhost:3003/server/suppliers', createData)
-        .then(res => {
-
-    }
-    )
-},[createData])
 
   return (
     // idesim is bootstarpo

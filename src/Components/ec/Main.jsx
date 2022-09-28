@@ -1,6 +1,6 @@
-function MainCon() {
+function Main() {
     return (
         <h1>Consumers</h1>
     )
 }
-export default MainCon;
+export default Main;

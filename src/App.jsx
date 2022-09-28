@@ -2,8 +2,8 @@ import './App.scss';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Nav from './Components/Nav';
 import Home from './Components/Home';
-import MainCon from './Components/ec/MainCon';
-import MainSup from './Components/es/MainSup';
+import MainCon from './Components/ec/Main';
+import MainSup from './Components/es/Main';
 
 function App() {
   return (
