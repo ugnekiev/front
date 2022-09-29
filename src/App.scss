@@ -5,7 +5,8 @@
     display: block;
     background-color: #0000005f;
 }
-image {
+
+.image {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -15,5 +16,15 @@ image {
         width: 100px;
         height: 100px;
         transition: all 2s;
+    }
+}
+
+.home-consumers-list {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    h4 {
+        margin: 0 5px;
     }
 }
