@@ -25,6 +25,14 @@ function Main() {
   })
   }, []);
 
+  // READ for list
+  useEffect(() => {
+    axios.get('http://localhost:3003/server/consumers')
+        .then(res => {
+            setConsumers(res.data);
+        })
+}, [lastUpdate]);
+
 //CREATE
   useEffect(() => {
   if(null === createData) {

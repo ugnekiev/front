@@ -49,19 +49,19 @@ function Edit() {
             <div className="card m-4">
       
       <div className="card-body">
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Supplier Title</label>
           <input type="text" className="form-control" value={title} onChange={e => setTitle(e.target.value)}/>
         </div>
         
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Supplier Price</label>
           <input type="text" className="form-control" value={price} onChange={e => setPrice(e.target.value)}/>
         </div>
       </div>
     </div>
           </div>
-          <div class="modal-footer">
+          <div className="modal-footer">
             <button onClick={() => setModalData(null)} type="button" className="btn btn-secondary">Close</button>
             <button onClick={save} type="button" className="btn btn-primary">Save changes</button>
           </div>

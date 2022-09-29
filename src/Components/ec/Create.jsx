@@ -38,15 +38,15 @@ const add = () => {
     <div className="card m-4">
       <h5 className="card-header">New Consumer</h5>
       <div className="card-body">
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Name</label>
           <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)}/>
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
           <label className="form-label">Surname</label>
           <input type="text" className="form-control" value={surname} onChange={e => setSurname(e.target.value)}/>
         </div>
-        <div class="mb-3">
+        <div className="mb-3">
         <label className="form-label">Counter Number</label>
         <input type="text" className="form-control" value={countnumber} onChange={e => setCountnumber(e.target.value)}/>
         </div>

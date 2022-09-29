@@ -5,69 +5,86 @@ import Consumers from '../../Contexts/Consumers';
 
 function Edit() {
 
-    const {modalData, setModalData, setEditData} = useContext(Consumers);
+  const [name, setName] = useState('');
+  const [surname, setSurname] = useState('');
+  const [countnumber, setCountnumber] = useState('');
+  const [supplier, setSupplier] = useState('0');
 
-    const [title, setTitle] = useState ('');
-    const [price, setPrice] = useState ('');
+  const { setEditData, suppliers, modalData, setModalData } = useContext(Consumers);
 
-    useEffect (() => {
-      if (null === modalData) {
-        return;
-    }
-      setTitle(modalData.title);
-      setPrice(modalData.price);
+  //pasieme suppliers - generuojame <select>
 
-    }, [modalData])
 
-    const save = () => {
-      setEditData({
-        title,
-        price: parseFloat(price),
-        id: modalData.id
+  const edit = () => {
+    setEditData({
+      name,
+      surname,
+      countnumber,
+      supplier: parseInt(supplier),
+      id: modalData.id
 
-      })
-      //kad po save uzsidarytu modalas
-      setModalData(null); 
+    });
+    setModalData(null);
+  }
 
-    }
-    console.log(modalData);
-
+  useEffect(() => {
     if (null === modalData) {
-        return null;
+      return;
     }
+  
+    setName(modalData.name);
+    setSurname(modalData.surname);
+    setCountnumber(modalData.counter_number);
+    setSupplier(modalData.supplier_id);
+
+  },[modalData])
+  //kada pasikeicia modalData- tada ir loadina
+
+  if (null === modalData) {
+    return null;
+  }
+
 
   return (
+    // idesim is bootstarpo
     <div className="modal">
       <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">Edit Consumers</h5>
-            <button onClick={() => setModalData(null)} type="button"className="btn-close"></button>
+            <h5 className="modal-title">Edit Consumer</h5>
+            <button onClick={() => setModalData(null)} type="button" className="btn-close"></button>
           </div>
-          <div className="modal-body">
-            {/* cia isicopinam CREATE struktura */}
-            <div className="card m-4">
-      
-      <div className="card-body">
-        <div class="mb-3">
-          <label className="form-label">Consumers Title</label>
-          <input type="text" className="form-control" value={title} onChange={e => setTitle(e.target.value)}/>
-        </div>
-        
-        <div class="mb-3">
-          <label className="form-label">Consumers Price</label>
-          <input type="text" className="form-control" value={price} onChange={e => setPrice(e.target.value)}/>
+          <div className="modal-body"></div>
+          <div className="card m-4">
+            <div className="card-body">
+              <div className="mb-3">
+                <label className="form-label">Name</label>
+                <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Surname</label>
+                <input type="text" className="form-control" value={surname} onChange={e => setSurname(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Counter Number</label>
+                <input type="text" className="form-control" value={countnumber} onChange={e => setCountnumber(e.target.value)} />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Suppliers</label>
+                <select className="form-select" value={supplier} onChange={e => setSupplier(e.target.value)}>
+                  <option value={0} disabled>Choose from list</option>
+                  {
+                    suppliers?.map(s => <option key={s.id} value={s.id}>{s.title}</option>)
+                  }
+                </select>
+              </div>
+              <button onClick={edit} type="button" className="btn btn-outline-dark">Save</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-          </div>
-          <div class="modal-footer">
-            <button onClick={() => setModalData(null)} type="button" className="btn btn-secondary">Close</button>
-            <button onClick={save} type="button" className="btn btn-primary">Save changes</button>
-          </div>
-        </div>
-      </div>
-    </div>
+
   );
 }
 
