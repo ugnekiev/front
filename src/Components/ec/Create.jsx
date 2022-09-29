@@ -1,63 +1,68 @@
-import genres from '../Data/genres';
-import { useState } from 'react';
 import { useContext } from 'react';
-import DataContext from './DataContext';
+import { useState } from 'react';
+import Consumers from '../../Contexts/Consumers';
+
+
 
 function Create() {
 
-const [title, setTitle] = useState ('');
-const [genre, setGenre] = useState ('0');
-const [year, setYear] = useState ('');
-const {setCreateData} = useContext(DataContext);
+const [name, setName] = useState ('');
+const [surname, setSurname] = useState ('');
+const [countnumber, setCountnumber] = useState('');
+const [supplier, setSupplier] = useState('0');
+
+const { setCreateData, suppliers } = useContext(Consumers);
+
+//pasieme suppliers - generuojame <select>
+
 
 const add = () => {
   setCreateData({
-    title,
-    genre: parseInt(genre),
-    year
+    name,
+    surname,
+    countnumber,
+    supplier: parseInt(supplier)
+    
   });
-  setTitle('');
-  setGenre('0');
-  setYear('');
+
+  setName('');
+  setSurname('');
+  setCountnumber('');
+  setSupplier(0);
+  
 }
 
-const doYear = e => {
-  let y = parseInt(e.target.value);
-  if (isNaN(y)) {
-    setYear ('');
-
-  }else {
-    setYear(Math.min(y, 2022));
-  }
-}
 
   return (
     // idesim is bootstarpo
     <div className="card m-4">
-      <h5 className="card-header">New Movie</h5>
+      <h5 className="card-header">New Consumer</h5>
       <div className="card-body">
         <div class="mb-3">
-          <label className="form-label">Movie Title</label>
-          <input type="text" className="form-control" value={title} onChange={e => setTitle(e.target.value)}/>
+          <label className="form-label">Name</label>
+          <input type="text" className="form-control" value={name} onChange={e => setName(e.target.value)}/>
         </div>
         <div class="mb-3">
-
-        <label className="form-label">Genre</label>
-        <select className="form-select" value={genre} onChange={e => setGenre(e.target.value)}>
-        <option value={0} disabled>Choose from list</option>
-          {
-            genres.map(g => <option key={g.id} value={g.id}>{g.type}</option>)
-          }
-        </select>
+          <label className="form-label">Surname</label>
+          <input type="text" className="form-control" value={surname} onChange={e => setSurname(e.target.value)}/>
         </div>
         <div class="mb-3">
-          <label className="form-label">Movie Year</label>
-          <input type="text" className="form-control" value={year} onChange={doYear}/>
+        <label className="form-label">Counter Number</label>
+        <input type="text" className="form-control" value={countnumber} onChange={e => setCountnumber(e.target.value)}/>
         </div>
+        <div className="mb-3">
+                    <label className="form-label">Suppliers</label>
+                    <select className="form-select" value={supplier} onChange={e => setSupplier(e.target.value)}>
+                        <option value={0} disabled>Choose from list</option>
+                        {
+                            suppliers?.map(s => <option key={s.id} value={s.id}>{s.title}</option>)
+                        }
+                    </select>
+                </div>
         <button onClick={add} type="button" className="btn btn-outline-dark">Add</button>
       </div>
     </div>
   );
-}
+        }
 
 export default Create;

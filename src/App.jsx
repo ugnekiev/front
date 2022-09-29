@@ -10,9 +10,9 @@ function App() {
     <BrowserRouter>
     <Nav />
     <Routes>
-      <Route path='home' element={<Home/>}></Route>
-      <Route path='consumers' element={<MainCon/>}></Route>
-      <Route path='suppliers' element={<MainSup/>}></Route>
+      <Route path='/' element={<Home />}></Route>
+      <Route path='/consumers' element={<MainCon/>}></Route>
+      <Route path='/suppliers' element={<MainSup/>}></Route>
     </Routes>
     </BrowserRouter>
   );

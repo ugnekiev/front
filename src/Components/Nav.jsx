@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Home from "./Home";
+
 
 function Nav() {
   return (
@@ -11,9 +11,9 @@ function Nav() {
                             <span className="navbar-brand">Electro City</span>
                             <div className="collapse navbar-collapse">
                                 <div className="navbar-nav">
-                                    <NavLink to="home" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Home</NavLink>
-                                    <NavLink to="suppliers" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Suppliers</NavLink>
-                                    <NavLink to="consumers" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Consumers</NavLink>
+                                    <NavLink to="/" end className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Home</NavLink>
+                                    <NavLink to="/suppliers" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Suppliers</NavLink>
+                                    <NavLink to="/consumers" className={ ({ isActive }) => isActive ? 'nav-link active' : 'nav-link' }>Consumers</NavLink>
                                 </div>
                             </div>
                         </div>

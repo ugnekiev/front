@@ -1,17 +1,19 @@
 import { useContext } from "react";
-import DataContext from "./DataContext";
+import Consumers from "../../Contexts/Consumers";
 import Line from "./Line";
 
 function List() {
 
-    const {movies} = useContext(DataContext);
+  const { consumers } = useContext(Consumers);
+
   return (
     <div className="card m-4">
-      <h5 className="card-header">Movies List</h5>
+      <h5 className="card-header">Consumers List</h5>
       <div className="card-body"></div>
       <ul className="list-group">
         {
-            movies?.map(m => <Line key={m.id} movie={m} />)
+          consumers?.map(c => <Line key={c.id} consumers={c} />
+          )
         }
       </ul>
     </div>
